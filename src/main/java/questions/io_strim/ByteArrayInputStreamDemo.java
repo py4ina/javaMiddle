@@ -8,7 +8,7 @@ public class ByteArrayInputStreamDemo {
         byte[] b = tmp.getBytes();
 
         ByteArrayInputStream stream1 = new ByteArrayInputStream(b);
-        ByteArrayInputStream stream2 = new ByteArrayInputStream(b, 0, 3);
+        ByteArrayInputStream stream2 = new ByteArrayInputStream(b, 0, 5);
 
         for (int i = 0; i < 2; i++){
             int c;
