@@ -11,6 +11,7 @@ public class Main {
         Class aClass = ref.getClass();
         Method[] methods = aClass.getMethods();
         System.out.println(Arrays.toString(methods));
+
     }
 }
 
