@@ -1,32 +1,57 @@
 package questions;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Main {
 
     public static void main(String[] args) {
-        int min = 1001;
-        int max = 2000;
-        int iteration = 0;
+        Object ref = new User(25, "Mike");
+        Class aClass = ref.getClass();
+        Method[] methods = aClass.getMethods();
+        System.out.println(Arrays.toString(methods));
 
+    }
+}
 
-        Path path = Paths.get("file0.txt");
+class User {
+    private int age;
+    private String name;
 
-//Use try-with-resource to get auto-closeable writer instance
-        try (BufferedWriter writer = Files.newBufferedWriter(path))
-        {
-            for (; min <= max; min++ ){
-                iteration++;
-                writer.write("000000000000000" + min + "\n");
-            }
-//            writer.write("Hello World !!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public User(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return age == user.age &&
+                Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(age, name);
     }
 }
