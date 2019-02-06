@@ -10,15 +10,12 @@ public class FileOutputStreamDemo {
                 "JBoss Tools. But there is more";
         byte[] buf = source.getBytes();
 
-        try(FileOutputStream f0 = new FileOutputStream("file0.txt");
-            FileOutputStream f1 = new FileOutputStream("file1.txt");
-            FileOutputStream f2 = new FileOutputStream("file2.txt")) {
+        try(FileOutputStream f = new FileOutputStream("file0.txt")) {
 
             for (int i = 0; i < buf.length; i += 2){
-                f0.write(buf[i]);
+                f.write(buf[i]);
             }
-            f1.write(buf);
-            f2.write(buf, buf.length - buf.length / 4, buf.length / 4);
+            f.write(buf);
 
         } catch (IOException e) {
             e.printStackTrace();
