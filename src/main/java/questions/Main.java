@@ -8,21 +8,14 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        NavigableSet<User> users = new TreeSet<>(User.BY_AGE);
+//        List<String> list = Arrays.asList("A", "B", "C", "A", "B", "A");
+//        System.out.println(list);
+        f(1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1);
 
-        users.add(new User(1, "A"));
-        users.add(new User(2, "B"));
-        users.add(new User(3, "C"));
-        users.add(new User(4, "D"));
-        users.add(new User(5, "I"));
-        users.add(new User(6, "F"));
+    }
 
-        System.out.println(users
-                .subSet(new User(2, "B"),
-                        true ,
-                        new User(5, "I"),
-                        true)
-        );
+    public static void f(int... args) {
+        System.out.println(Arrays.toString(args));
     }
 }
 
