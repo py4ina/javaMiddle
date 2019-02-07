@@ -5,17 +5,33 @@ import lombok.ToString;
 
 import java.util.*;
 
+import static java.util.Arrays.asList;
+
 public class Main {
 
     public static void main(String[] args) {
-//        List<String> list = Arrays.asList("A", "B", "C", "A", "B", "A");
-//        System.out.println(list);
-        f(1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1);
+        List<String> list = new ArrayList<>(asList("A", "B", "C", "A", "B", "A"));
+
+        Map<String, Integer> map = new HashMap<>();
+        toStatMap(list, map);
+        System.out.println(map);
+
+        ArrayList<Integer> tmp = new ArrayList<>(map.values());
+        Collections.sort(tmp);
+        System.out.println(tmp.listIterator(tmp.size()).previous());
+
 
     }
 
-    public static void f(int... args) {
-        System.out.println(Arrays.toString(args));
+    private static void toStatMap(List<String> list, Map<String, Integer> map) {
+        for (String key : list) {
+            Integer value = map.get(key);
+            if (value == null) {
+                map.put(key, 1);
+            } else {
+                map.put(key, (value + 1));
+            }
+        }
     }
 }
 
