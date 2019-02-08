@@ -10,28 +10,37 @@ import static java.util.Arrays.asList;
 public class Main {
 
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>(asList("A", "B", "C", "A", "B", "A"));
+        List<String> list = new ArrayList<>(asList("A", "B", "C", "A", "B"));
 
-        Map<String, Integer> map = new HashMap<>();
-        toStatMap(list, map);
+        Map<String, Integer> map = toStatMap(list);
         System.out.println(map);
 
-        ArrayList<Integer> tmp = new ArrayList<>(map.values());
-        Collections.sort(tmp);
-        System.out.println(tmp.listIterator(tmp.size()).previous());
-
-
+        TreeSet<Map.Entry<String, Integer>> entries = new TreeSet<>(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> entry0, Map.Entry<String, Integer> entry1) {
+                int delta = entry0.getValue() - entry1.getValue();
+                return delta != 0 ? delta : entry0.getKey().compareTo(entry1.getKey());
+            }
+        });
+        entries.addAll(map.entrySet());
+        TreeMap<String, Integer> tmp = new TreeMap<>();
+        tmp.put("*", entries.last().getValue());
+        Map.Entry<String, Integer> edge = tmp.entrySet().iterator().next();
+        entries.tailSet(edge);
+        System.out.println(entries);
     }
 
-    private static void toStatMap(List<String> list, Map<String, Integer> map) {
+    private static HashMap<String, Integer> toStatMap(List<String> list) {
+        HashMap<String, Integer> hashMap = new HashMap<>();
         for (String key : list) {
-            Integer value = map.get(key);
+            Integer value = hashMap.get(key);
             if (value == null) {
-                map.put(key, 1);
+                hashMap.put(key, 1);
             } else {
-                map.put(key, (value + 1));
+                hashMap.put(key, (value + 1));
             }
         }
+        return hashMap;
     }
 }
 
