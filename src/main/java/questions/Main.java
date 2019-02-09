@@ -3,44 +3,24 @@ package questions;
 import lombok.Data;
 import lombok.ToString;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
-import static java.util.Arrays.asList;
+import static java.lang.Integer.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>(asList("A", "B", "C", "A", "B"));
+        Area area = new Area();
+        area.add(new Point(0, 0));
+        area.add(new Point(0, 1000));
+        area.add(new Point(1000, 0));
+        area.add(new Point(1000, 1000));
+        area.add(new Point(900, 900));
 
-        Map<String, Integer> map = toStatMap(list);
-        System.out.println(map);
-
-        TreeSet<Map.Entry<String, Integer>> entries = new TreeSet<>(new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> entry0, Map.Entry<String, Integer> entry1) {
-                int delta = entry0.getValue() - entry1.getValue();
-                return delta != 0 ? delta : entry0.getKey().compareTo(entry1.getKey());
-            }
-        });
-        entries.addAll(map.entrySet());
-        TreeMap<String, Integer> tmp = new TreeMap<>();
-        tmp.put("*", entries.last().getValue());
-        Map.Entry<String, Integer> edge = tmp.entrySet().iterator().next();
-        entries.tailSet(edge);
-        System.out.println(entries);
-    }
-
-    private static HashMap<String, Integer> toStatMap(List<String> list) {
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        for (String key : list) {
-            Integer value = hashMap.get(key);
-            if (value == null) {
-                hashMap.put(key, 1);
-            } else {
-                hashMap.put(key, (value + 1));
-            }
-        }
-        return hashMap;
+        System.out.println(area.select(500, 10000, 500, 10000));
     }
 }
 
@@ -73,5 +53,46 @@ class NameComparator implements Comparator<User> {
     @Override
     public int compare(User user1, User user2) {
         return user1.getName().compareTo(user2.getName());
+    }
+}
+
+@ToString
+class Point {
+    public final int x;
+    public final int y;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Area {
+    private NavigableSet<Point> setX = new TreeSet<>((p0, p1) -> {
+        int delta = p0.x - p1.x;
+        return delta != 0 ? delta : (p0.y - p1.y);
+    });
+
+
+    private NavigableSet<Point> setY = new TreeSet<>((p0, p1) -> {
+        int delta = p0.y - p1.y;
+        return delta != 0 ? delta : (p0.x - p1.x);
+    });
+
+    public void add(Point point){
+        setX.add(point);
+        setY.add(point);
+    }
+
+    Collection<Point> select(int x0, int x1, int y0, int y1){
+        NavigableSet<Point> dX = setX.subSet(
+                new Point(x0, MIN_VALUE), true,
+                new Point(x1, MAX_VALUE), true);
+        NavigableSet<Point> dY = setY.subSet(
+                new Point(MIN_VALUE, y0), true,
+                new Point(MAX_VALUE, y1), true);
+
+        dX.retainAll(dY);
+        return dX;
     }
 }
