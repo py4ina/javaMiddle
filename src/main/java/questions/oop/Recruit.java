@@ -27,9 +27,30 @@ public class Recruit {
     }
 }
 
+class DefFieldValue {
+    private int i = 1;
+    private double d = 1.5;
+    private boolean b = calcBoolean();
+
+    private boolean calcBoolean() {
+        System.out.println("calcBoolean()");
+        return false;
+    }
+
+    private Object object = new Object();
+    private int[] arr = {0, 1, 2};
+
+    public DefFieldValue() {
+        System.out.println("i = " + i);
+        System.out.println("d = " + d);
+        System.out.println("b = " + b);
+        System.out.println("object = " + object);
+        System.out.println("arr = " + arr);
+    }
+}
 
 class Main {
     public static void main(String[] args) {
-        Recruit recruit = new Recruit("22");
+        DefFieldValue defFieldValue = new DefFieldValue();
     }
 }
