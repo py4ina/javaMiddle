@@ -5,12 +5,22 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import static java.lang.Math.min;
 
 public class GenericLesson {
     public static void main(String[] args) {
-        Integer i = mock(1);
+//        Integer i = mock(1);
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(4);
+        integers.add(3);
+        integers.add(5);
+
+        System.out.println(integers);
+        integers.sort((o1, o2) -> (o1 - o2));
+        System.out.println(integers);
     }
 
     private static void testGenericsA() {
