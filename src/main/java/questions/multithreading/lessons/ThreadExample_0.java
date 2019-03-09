@@ -1,4 +1,4 @@
-package questions.multithreading;
+package questions.multithreading.lessons;
 
 import lombok.AllArgsConstructor;
 
@@ -18,8 +18,8 @@ public class ThreadExample_0 {
        });
        runThread.start();
 
-        System.out.println("Main: wait for main!");
-        runThread.join();
+       System.out.println("Main: wait for main!");
+       runThread.join();
     }
 }
 
