@@ -25,8 +25,9 @@ public class MainReader {
         for (String name : files) {
             map.putAll(readNewFile(name, map));
         }
-
-        System.out.println("Finish!");
+//        Runtime runtime = Runtime.getRuntime();
+//        long memory = runtime.totalMemory() - runtime.freeMemory();
+//        System.out.println(memory);
     }
 
     private static List<String> fileReader(String fileName) {
