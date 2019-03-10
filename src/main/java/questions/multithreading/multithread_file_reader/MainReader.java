@@ -23,19 +23,28 @@ public class MainReader {
         files.add(fileName3);
 
         for (String name : files) {
-            map.putAll(readNewFile(name, map));
+//            map.putAll(readNewFile(name, map));
+
+            List<String> list = new ArrayList<>();
+            Thread thread = new Thread(() -> list.addAll(fileReader(name)));
+
+            thread.start();
+
+            synchronized (thread){
+                thread.wait();
+            }
+            thread.join();
+            map.put(name, list);
         }
-//        Runtime runtime = Runtime.getRuntime();
-//        long memory = runtime.totalMemory() - runtime.freeMemory();
-//        System.out.println(memory);
+        System.out.println("ttt");
     }
+
+
 
     private static List<String> fileReader(String fileName) {
         List<String> list = new ArrayList<>();
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-
             stream.forEach(line -> list.add(line));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,14 +53,18 @@ public class MainReader {
 
     private static Map<String, List<String>> readNewFile(String fileName, Map<String, List<String>> map)
             throws InterruptedException {
+        System.out.println("Start");
         List<String> list = new ArrayList<>();
+
         Thread thread = new Thread(() -> {
             System.out.println(fileName);
             list.addAll(fileReader(fileName));
         });
         thread.start();
         thread.join();
+
         map.put(fileName, list);
+        System.out.println("Finish");
         return map;
     }
 }
