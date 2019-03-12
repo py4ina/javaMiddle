@@ -14,9 +14,9 @@ public class MainReader {
         Map<String, List<String>> map = new HashMap<>();
         List<String> files = new ArrayList<>();
 
-        String fileName = "/home/py4ina/Downloads/Test/VodafoneTestPOP.txt";
-        String fileName2 = "/home/py4ina/Downloads/Test/VodafoneTest.txt";
-        String fileName3 = "/home/py4ina/Downloads/Test/VodafoneTestPOP2.txt";
+        String fileName = "/home/vitalik/Documents/UkrPol/DNA/45188393/45188393_DNAGD_01078.LBB";
+        String fileName2 = "/home/vitalik/Documents/UkrPol/DNA/45188393/45188393_DNAGD_01079.LBB";
+        String fileName3 = "/home/vitalik/Documents/UkrPol/DNA/45188393/45188393_DNAGD_01080.LBB";
 
         files.add(fileName);
         files.add(fileName2);
@@ -28,6 +28,7 @@ public class MainReader {
 //        Runtime runtime = Runtime.getRuntime();
 //        long memory = runtime.totalMemory() - runtime.freeMemory();
 //        System.out.println(memory);
+        System.out.println("1");
     }
 
     private static List<String> fileReader(String fileName) {
@@ -44,14 +45,17 @@ public class MainReader {
 
     private static Map<String, List<String>> readNewFile(String fileName, Map<String, List<String>> map)
             throws InterruptedException {
+        System.out.println("Start");
         List<String> list = new ArrayList<>();
         Thread thread = new Thread(() -> {
             System.out.println(fileName);
             list.addAll(fileReader(fileName));
         });
         thread.start();
+        thread.sleep(1000);
         thread.join();
         map.put(fileName, list);
+        System.out.println("Finish");
         return map;
     }
 }
