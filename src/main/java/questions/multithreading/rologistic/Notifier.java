@@ -16,7 +16,7 @@ public class Notifier implements Runnable {
             synchronized (msg){
                 msg.setMsg(name + " поток Notifier отработал");
 //                msg.notify();
-                 msg.notifyAll();
+                msg.notifyAll();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
