@@ -5,7 +5,8 @@ public class BlockedSetExample {
         BlockedSetExample ref = new BlockedSetExample();
 
         for (int k = 0; k < 5; k++) {
-            new Thread(new BlockedMethodCaller(ref, k)).start();
+//            new Thread(new BlockedMethodCaller(ref, k)).start();
+            new Thread(new BlockedMethodCaller(new BlockedSetExample(), k)).start();
         }
     }
 
