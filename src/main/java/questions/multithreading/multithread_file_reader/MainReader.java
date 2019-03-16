@@ -23,7 +23,16 @@ public class MainReader {
         files.add(fileName3);
 
         for (String name : files) {
-            map.putAll(readNewFile(name, map));
+            List<String> list = new ArrayList<>();
+            Thread thread = new Thread(() -> {
+                System.out.println(name);
+                list.addAll(fileReader(fileName));
+            });
+            thread.start();
+            System.out.println("finish -> " + name);
+            thread.sleep(1000);
+            thread.join();
+            map.put(name, list);
         }
 //        Runtime runtime = Runtime.getRuntime();
 //        long memory = runtime.totalMemory() - runtime.freeMemory();
@@ -52,7 +61,7 @@ public class MainReader {
             list.addAll(fileReader(fileName));
         });
         thread.start();
-        thread.sleep(1000);
+//        thread.sleep(1000);
         thread.join();
         map.put(fileName, list);
         System.out.println("Finish");

@@ -6,8 +6,11 @@ public class WaitNotifySynchronizedTest_0 {
         f();
     }
 
-    private static synchronized void f() {
+    private static void f() {
         Class aClass = WaitNotifySynchronizedTest_0.class;
-        aClass.notify();
+
+        synchronized (aClass){
+            aClass.notify();
+        }
     }
 }
