@@ -5,9 +5,10 @@ public class ExceptionTest_TC_0 {
         try {
             System.out.println(0);
             throw new RuntimeException();
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             System.out.println(1);
         }
+
         System.out.println(2);
     }
 }
