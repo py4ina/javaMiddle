@@ -2,16 +2,17 @@ package questions.exception;
 
 public class ExceptionTest_TC_0 {
     public static void main(String[] args) {
+        System.out.println(f());
+
+    }
+
+    private static int f() {
         try {
             System.out.println(0);
-            throw new NullPointerException();
-        } catch (NullPointerException e) {
+            return 42;
+        } finally {
             System.out.println(1);
-            throw e;
-        } catch (ArithmeticException e){
-            System.out.println(2);
+            return 24;
         }
-
-        System.out.println(3);
     }
 }
