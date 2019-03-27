@@ -1,5 +1,7 @@
 package questions.serialization;
 
+import java.io.Serializable;
+
 public class ShallowCopy {
     public static void main(String[] args) {
         Person husband = new Person();
@@ -14,8 +16,8 @@ public class ShallowCopy {
     }
 }
 
-class Person {
-    public String name;
+class Person implements Serializable {
+    public transient String name;
     public Person couple;
 
     Person(){}
@@ -24,5 +26,4 @@ class Person {
         this.name = source.name;
         this.couple = source.couple;
     }
-
 }
