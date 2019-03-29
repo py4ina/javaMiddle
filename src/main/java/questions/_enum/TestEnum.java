@@ -21,3 +21,17 @@ class T{
     }
 }
 
+class Main {
+    public static void main(String[] args) {
+        Integer iOb = 7;
+        Double dOb = 7.0;
+        Character cOb = 'a';
+        Boolean bOb = true;
+
+        method(7);
+    }
+
+    public static void method(Integer iOb) {
+        System.out.println("Integer");
+    }
+}
