@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/ukrpol_print_label"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="root"
+              password="UkrPol_123"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://192.168.34.3:3306/ukrpol_print_label?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8"
+              maxActive="50" maxIdle="20" />
+</Context>
