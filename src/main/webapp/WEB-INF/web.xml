@@ -10,4 +10,25 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <!-- CONTROLLERS -->
+    <!-- product -->
+    <servlet>
+        <servlet-name>productController</servlet-name>
+        <servlet-class>com.learn.servlet.controller.ProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productController</servlet-name>
+        <url-pattern>/product.do</url-pattern>
+    </servlet-mapping>
+    <!-- mock -->
+    <servlet>
+        <servlet-name>mockController</servlet-name>
+        <servlet-class>com.learn.servlet.controller.MockController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mockController</servlet-name>
+        <url-pattern>/mock.do</url-pattern>
+    </servlet-mapping>
+
 </web-app>
