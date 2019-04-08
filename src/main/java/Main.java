@@ -1,26 +1,21 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 public class Main {
-    public static void main(String[] args) throws IllegalArgumentException, IllegalArgumentException {
-        sqr(2);
-    }
-
-    public static double sqr(double arg) {
-
-        throw new RuntimeException();
-    }
-
-}
-
- class Formatter {
-    public String format(String value) {
-        return "["+value+"]";
-    }
-}
-
-class TestNPE {
-    public static String handle(Formatter f, String s) {
-        if("".equals(s)) {
-            return "(none)";
+    public static void main(String[] args) {
+        Map map = new TestMap();
+        for (Iterator iterator = map.keySet().iterator(); iterator.hasNext(); ) {
+            Object o = iterator.next();
+            System.out.println(o);
         }
-        return f.format(s.trim());
+    }
+}
+
+class TestMap extends HashMap {
+    @Override
+    public Set keySet(){
+        return  null;
     }
 }
