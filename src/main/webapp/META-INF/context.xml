@@ -3,9 +3,9 @@
     <Resource name="jdbc/ukrpol_print_label"
               auth="Container"
               type="javax.sql.DataSource"
-              username="root"
-              password="UkrPol_123"
+              username="py4ina"
+              password="Reper245!"
               driverClassName="com.mysql.jdbc.Driver"
-              url="jdbc:mysql://192.168.34.3:3306/ukrpol_print_label?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8"
+              url="jdbc:mysql://localhost:3306/middle?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF8"
               maxActive="50" maxIdle="20" />
 </Context>

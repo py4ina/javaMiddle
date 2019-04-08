@@ -5,7 +5,7 @@
          id="WebApp_ID"
          version="3.0">
 
-    <display-name>OrangeLabel</display-name>
+    <display-name>Middle</display-name>
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
