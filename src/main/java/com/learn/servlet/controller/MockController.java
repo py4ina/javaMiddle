@@ -10,4 +10,5 @@ public class MockController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().write("Hello from servlet!");
     }
+
 }
