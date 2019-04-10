@@ -7,8 +7,6 @@
 
     <display-name>Middle</display-name>
 
-
-
     <!-- CONTROLLERS -->
     <!-- product -->
     <servlet>
@@ -46,8 +44,31 @@
     </filter>
     <filter-mapping>
         <filter-name>infoFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>*.do</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+    <!-- request info -->
+    <filter>
+        <filter-name>attributeToSessionFilter</filter-name>
+        <filter-class>com.learn.servlet.filter.AddAttributesToSessionFilter</filter-class>
+        <init-param>
+            <param-name>filter-param-name-A</param-name>
+            <param-value>filter-param-name-A</param-value>
+        </init-param>
+        <init-param>
+            <param-name>filter-param-name-B</param-name>
+            <param-value>filter-param-name-B</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>attributeToSessionFilter</filter-name>
+        <servlet-name>mockController</servlet-name>
+    </filter-mapping>
+    
+    <!--&lt;!&ndash; LISTENERS &ndash;&gt;-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyHttpSession</listener-class>-->
+    <!--</listener>-->
 
     <session-config>
         <session-timeout>30</session-timeout>
