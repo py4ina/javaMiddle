@@ -1,23 +1,14 @@
 package com.learn;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.util.*;
+//import org.apache.commons.lang3.ArrayUtils;
 
 public class Main {
     public static void main(String[] args) {
-        Map map = new TestMap();
-        for (Iterator iterator = map.keySet().iterator(); iterator.hasNext(); ) {
-            Object o = iterator.next();
-            System.out.println(o);
-        }
-    }
-}
-
-class TestMap extends HashMap {
-    @Override
-    public Set keySet(){
-        return  null;
+        int[] n = {1, 5, 15, 2, 8, 6, 7};
+//        System.out.println(n.toString());
+        List<Integer> list = Arrays.asList(ArrayUtils.toObject(n));
     }
 }
