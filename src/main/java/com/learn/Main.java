@@ -1,14 +1,14 @@
 package com.learn;
 
-import org.apache.commons.lang3.ArrayUtils;
-
-import java.util.*;
-//import org.apache.commons.lang3.ArrayUtils;
-
 public class Main {
+    static Integer str = new Integer(1);
+
+    public static void changeIt(Integer s) {
+        s = 2;
+    }
+
     public static void main(String[] args) {
-        int[] n = {1, 5, 15, 2, 8, 6, 7};
-//        System.out.println(n.toString());
-        List<Integer> list = Arrays.asList(ArrayUtils.toObject(n));
+        changeIt(str);
+        System.out.println(str);
     }
 }
