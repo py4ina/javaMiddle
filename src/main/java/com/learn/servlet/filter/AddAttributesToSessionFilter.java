@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Enumeration;
 
-//@WebFilter(filterName = "AddAttributesToSessionFilter")
 public class AddAttributesToSessionFilter extends BaseFilter {
     private FilterConfig filterConfig;
 
@@ -19,7 +18,7 @@ public class AddAttributesToSessionFilter extends BaseFilter {
         this.filterConfig = config;
     }
 
-//    @Override
+    @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpSession session = req.getSession(true);
 
@@ -31,8 +30,4 @@ public class AddAttributesToSessionFilter extends BaseFilter {
         }
         chain.doFilter(req, resp);
     }
-
-    public void destroy() {
-    }
-
 }

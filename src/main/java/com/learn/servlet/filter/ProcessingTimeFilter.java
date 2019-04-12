@@ -26,5 +26,6 @@ public class ProcessingTimeFilter implements Filter {
 
     @Override
     public void destroy() {
+        System.out.println(">> ProcessingTimeFilter - destroy");
     }
 }
