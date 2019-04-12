@@ -2,19 +2,15 @@ package com.learn;
 
 public class Main {
 
-    static String str = "Value 1";
-
-    public static void changeIt(String s) {
-        s = "Value 2";
-    }
-
     public static void main(String[] args) {
-//        changeIt(str);
-//        System.out.println(str);
-        String s1 = new String("A");
-        String s2 = s1;
-        System.out.println(s1 + ", "+ s2);
-        s1 = new String("B");
-        System.out.println(s1 + ", "+ s2);
+        Double d1 = Double.MAX_VALUE;
+        Double d2 = Double.MAX_VALUE;
+
+        System.out.println(d1.hashCode());
+//        d2 = d2 +100000000000000000000000000.1;
+        System.out.println(d2.hashCode());
+
+        System.out.println(d2.equals(d1));
+        System.out.println(d1.hashCode() == d2.hashCode());
     }
 }
