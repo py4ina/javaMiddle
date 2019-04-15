@@ -53,11 +53,11 @@
         <filter-class>com.learn.servlet.filter.AddAttributesToSessionFilter</filter-class>
         <init-param>
             <param-name>filter-param-name-A</param-name>
-            <param-value>filter-param-name-A</param-value>
+            <param-value>filter-param-value-A</param-value>
         </init-param>
         <init-param>
             <param-name>filter-param-name-B</param-name>
-            <param-value>filter-param-name-B</param-value>
+            <param-value>filter-param-value-B</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -65,10 +65,31 @@
         <servlet-name>mockController</servlet-name>
     </filter-mapping>
     
-    <!--&lt;!&ndash; LISTENERS &ndash;&gt;-->
-    <!--<listener>-->
-        <!--<listener-class>com.learn.servlet.listener.MyHttpSession</listener-class>-->
-    <!--</listener>-->
+    <!-- LISTENERS -->
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyHttpSessionActivationListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyHttpSessionAtributeListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyHttpSessionBindingListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyHttpSessionListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyServletContextAttributeListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyServletContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyServletRequestAttributeListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.learn.servlet.listener.MyServletRequestListener</listener-class>
+    </listener>
 
     <session-config>
         <session-timeout>30</session-timeout>
