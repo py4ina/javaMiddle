@@ -3,7 +3,6 @@ package com.learn.servlet.filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,7 +13,7 @@ public class AddAttributesToSessionFilter extends BaseFilter {
     private FilterConfig filterConfig;
 
     @Override
-    public void init(FilterConfig config) throws ServletException {
+    public void init(FilterConfig config) {
         this.filterConfig = config;
     }
 
