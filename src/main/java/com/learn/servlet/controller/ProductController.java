@@ -1,10 +1,10 @@
 package com.learn.servlet.controller;
 
-import com.learn.servlet.dao.exception.DaoSystemException;
-import com.learn.servlet.entity.Product;
 import com.learn.servlet.dao.ProductDao;
-import com.learn.servlet.dao.impl.ProductDaoMock;
+import com.learn.servlet.dao.exception.DaoSystemException;
 import com.learn.servlet.dao.exception.NoSuchEntityException;
+import com.learn.servlet.dao.impl.ProductDaoMock;
+import com.learn.servlet.entity.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,13 +30,9 @@ public class ProductController extends HttpServlet {
                 request.getRequestDispatcher(PAGE_OK).forward(request, response);
                 return;
             } catch (NumberFormatException | NoSuchEntityException | DaoSystemException e){
-                e.toString();
-
+                e.printStackTrace();
             }
         }
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.sendRedirect(PAGE_ERROR);
     }
 }
