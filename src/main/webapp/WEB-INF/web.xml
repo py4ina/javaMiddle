@@ -26,6 +26,15 @@
         <servlet-name>mockController</servlet-name>
         <url-pattern>/mock.do</url-pattern>
     </servlet-mapping>
+    <!--MVCMockController-->
+    <servlet>
+        <servlet-name>MVCMockController</servlet-name>
+        <servlet-class>com.learn.servlet.controller.MVCMockController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MVCMockController</servlet-name>
+        <url-pattern>/mvcMock.do</url-pattern>
+    </servlet-mapping>
 
     <!-- FILTERS -->
     <!-- processing time -->

@@ -6,6 +6,7 @@ import com.learn.servlet.dao.exception.NoSuchEntityException;
 import com.learn.servlet.dao.impl.ProductDaoMock;
 import com.learn.servlet.entity.Product;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ProductController extends HttpServlet {
-    public static final String PARAM_ID = "id";
-    public static final String ATTRIBUTE_MODEL_TO_VIEW = "product";
-    public static final String PAGE_OK = "product.jsp";
-    public static final String PAGE_ERROR = "error.jsp";
+    private static final String PARAM_ID = "id";
+    private static final String ATTRIBUTE_MODEL_TO_VIEW = "product";
+    private static final String PAGE_OK = "product.jsp";
+    private static final String PAGE_ERROR = "error.jsp";
 
     private ProductDao productDao = new ProductDaoMock();
 
@@ -27,7 +28,9 @@ public class ProductController extends HttpServlet {
                 Integer id = Integer.valueOf(idStr);
                 Product model = productDao.selectById(id);
                 request.setAttribute(ATTRIBUTE_MODEL_TO_VIEW, model);
-                request.getRequestDispatcher(PAGE_OK).forward(request, response);
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE_OK);
+                dispatcher.forward(request, response);
                 return;
             } catch (NumberFormatException | NoSuchEntityException | DaoSystemException e){
                 e.printStackTrace();
