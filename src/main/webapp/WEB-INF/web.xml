@@ -33,7 +33,25 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>MVCMockController</servlet-name>
-        <url-pattern>/mvcMock.do</url-pattern>
+        <url-pattern>/mvcMockController.do</url-pattern>
+    </servlet-mapping>
+    <!--SessionMockController-->
+    <servlet>
+        <servlet-name>SessionMockController</servlet-name>
+        <servlet-class>com.learn.servlet.controller.SessionMockController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionMockController</servlet-name>
+        <url-pattern>/sessionMock.do</url-pattern>
+    </servlet-mapping>
+    <!--CookieMockController-->
+    <servlet>
+        <servlet-name>CookieMockController</servlet-name>
+        <servlet-class>com.learn.servlet.controller.CookieMockController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieMockController</servlet-name>
+        <url-pattern>/cookieMock.do</url-pattern>
     </servlet-mapping>
 
     <!-- FILTERS -->

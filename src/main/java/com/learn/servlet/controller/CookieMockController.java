@@ -10,9 +10,6 @@ import java.io.IOException;
 
 @WebServlet(name = "CookieMockController")
 public class CookieMockController extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
