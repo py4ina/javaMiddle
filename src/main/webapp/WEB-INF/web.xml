@@ -20,34 +20,34 @@
     <!-- mock -->
     <servlet>
         <servlet-name>mockController</servlet-name>
-        <servlet-class>com.learn.servlet.controller.MockController</servlet-class>
+        <servlet-class>com.learn.servlet.controller.demo.DemoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>mockController</servlet-name>
         <url-pattern>/mock.do</url-pattern>
     </servlet-mapping>
-    <!--MVCMockController-->
+    <!--MVCDemoController-->
     <servlet>
         <servlet-name>MVCMockController</servlet-name>
-        <servlet-class>com.learn.servlet.controller.MVCMockController</servlet-class>
+        <servlet-class>com.learn.servlet.controller.demo.MVCDemoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MVCMockController</servlet-name>
         <url-pattern>/mvcMockController.do</url-pattern>
     </servlet-mapping>
-    <!--SessionMockController-->
+    <!--SessionDemoController-->
     <servlet>
         <servlet-name>SessionMockController</servlet-name>
-        <servlet-class>com.learn.servlet.controller.SessionMockController</servlet-class>
+        <servlet-class>com.learn.servlet.controller.demo.SessionDemoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SessionMockController</servlet-name>
         <url-pattern>/sessionMock.do</url-pattern>
     </servlet-mapping>
-    <!--CookieMockController-->
+    <!--CookieDemoController-->
     <servlet>
         <servlet-name>CookieMockController</servlet-name>
-        <servlet-class>com.learn.servlet.controller.CookieMockController</servlet-class>
+        <servlet-class>com.learn.servlet.controller.demo.CookieDemoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CookieMockController</servlet-name>
@@ -119,7 +119,7 @@
     </listener>
 
     <session-config>
-        <session-timeout>30</session-timeout>
+        <session-timeout>240</session-timeout>
     </session-config>
 
     <welcome-file-list>

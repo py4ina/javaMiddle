@@ -1,4 +1,4 @@
-package com.learn.servlet.controller;
+package com.learn.servlet.controller.demo;
 
 import com.learn.servlet.entity.MockEntityA;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-public class MVCMockController extends HttpServlet {
+public class MVCDemoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("requestAttribute", new MockEntityA());

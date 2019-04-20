@@ -1,4 +1,4 @@
-package com.learn.servlet.controller;
+package com.learn.servlet.controller.demo;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class SessionMockController extends HttpServlet {
+public class SessionDemoController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
