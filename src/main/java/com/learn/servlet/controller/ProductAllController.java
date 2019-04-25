@@ -16,9 +16,10 @@ import java.util.List;
 
 @WebServlet(name = "ProductAllController")
 public class ProductAllController extends HttpServlet {
-    public static final String ATTRIBUTE_MODEL_TO_VIEW = "productId";
-    public static final String PAGE_OK = "productAll.jsp";
-    public static final String PAGEERROR = "error.jsp";
+    private static final String PARAM_ID = "id";
+    private static final String ATTRIBUTE_MODEL_TO_VIEW = "productList";
+    private static final String PAGE_OK = "productAll.jsp";
+    private static final String PAGE_ERROR = "error.jsp";
 
     private ProductDao productDao = new ProductDaoMock();
 
@@ -26,11 +27,12 @@ public class ProductAllController extends HttpServlet {
         try {
             List<Product> model = productDao.selectAll();
             request.setAttribute(ATTRIBUTE_MODEL_TO_VIEW, model);
-            RequestDispatcher dispatcher = request.getRequestDispatcher();
+            RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE_OK);
             dispatcher.forward(request, response);
             return;
         } catch (DaoSystemException e){
             e.printStackTrace();
         }
+        response.sendRedirect(PAGE_ERROR);
     }
 }

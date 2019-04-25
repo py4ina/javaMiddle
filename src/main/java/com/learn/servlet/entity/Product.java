@@ -19,4 +19,6 @@ public class Product {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+
 }
