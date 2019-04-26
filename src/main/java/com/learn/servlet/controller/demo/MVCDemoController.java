@@ -1,6 +1,6 @@
 package com.learn.servlet.controller.demo;
 
-import com.learn.servlet.entity.MockEntityA;
+import com.learn.servlet.entity.demo.MockEntityA;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

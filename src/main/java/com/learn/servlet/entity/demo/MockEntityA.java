@@ -1,4 +1,4 @@
-package com.learn.servlet.entity;
+package com.learn.servlet.entity.demo;
 
 import lombok.Getter;
 
