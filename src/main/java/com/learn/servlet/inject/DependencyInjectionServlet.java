@@ -1,5 +1,7 @@
 package com.learn.servlet.inject;
 
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -7,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Properties;
 
 public class DependencyInjectionServlet extends HttpServlet {
     private static final String APP_CTX_PATH = "contextConfigLocation";
@@ -43,6 +46,24 @@ public class DependencyInjectionServlet extends HttpServlet {
             }
         } catch (Exception e) {
             throw new ServletException("Can't inject from " + APP_CTX_PATH, e);
+        }
+    }
+}
+
+class Test {
+    @Value("#{systemProperties[user.timezone]}")
+    private String string;
+
+    Test(){
+        System.out.println(string);
+    }
+
+    public static void main(String[] args) {
+        Test test = new Test();
+        Properties properties = System.getProperties();
+
+        for (Object key : properties.keySet()) {
+            System.out.println(key + " -> " + System.getProperty((String) key));
         }
     }
 }
