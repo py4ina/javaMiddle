@@ -54,74 +54,74 @@
         <url-pattern>/cookieMock.do</url-pattern>
     </servlet-mapping>
 
-    <!-- FILTERS -->
-    <!-- processing time -->
-    <filter>
-        <filter-name>timeFilter</filter-name>
-        <filter-class>com.learn.servlet.filter.ProcessingTimeFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>timeFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    <!-- request info -->
-    <filter>
-        <filter-name>infoFilter</filter-name>
-        <filter-class>com.learn.servlet.filter.RequestInfoFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>infoFilter</filter-name>
-        <url-pattern>*.do</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-    <!-- request info -->
-    <filter>
-        <filter-name>attributeToSessionFilter</filter-name>
-        <filter-class>com.learn.servlet.filter.AddAttributesToSessionFilter</filter-class>
-        <init-param>
-            <param-name>filter-param-name-A</param-name>
-            <param-value>filter-param-value-A</param-value>
-        </init-param>
-        <init-param>
-            <param-name>filter-param-name-B</param-name>
-            <param-value>filter-param-value-B</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>attributeToSessionFilter</filter-name>
-        <servlet-name>mockController</servlet-name>
-    </filter-mapping>
-    
-    <!-- LISTENERS -->
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyHttpSessionActivationListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyHttpSessionAtributeListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyHttpSessionBindingListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyHttpSessionListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyServletContextAttributeListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyServletContextListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyServletRequestAttributeListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.learn.servlet.listener.MyServletRequestListener</listener-class>
-    </listener>
+    <!--&lt;!&ndash; FILTERS &ndash;&gt;-->
+    <!--&lt;!&ndash; processing time &ndash;&gt;-->
+    <!--<filter>-->
+        <!--<filter-name>timeFilter</filter-name>-->
+        <!--<filter-class>com.learn.servlet.filter.ProcessingTimeFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>timeFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!--&lt;!&ndash; request info &ndash;&gt;-->
+    <!--<filter>-->
+        <!--<filter-name>infoFilter</filter-name>-->
+        <!--<filter-class>com.learn.servlet.filter.RequestInfoFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>infoFilter</filter-name>-->
+        <!--<url-pattern>*.do</url-pattern>-->
+        <!--<dispatcher>REQUEST</dispatcher>-->
+    <!--</filter-mapping>-->
+    <!--&lt;!&ndash; request info &ndash;&gt;-->
+    <!--<filter>-->
+        <!--<filter-name>attributeToSessionFilter</filter-name>-->
+        <!--<filter-class>com.learn.servlet.filter.AddAttributesToSessionFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>filter-param-name-A</param-name>-->
+            <!--<param-value>filter-param-value-A</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>filter-param-name-B</param-name>-->
+            <!--<param-value>filter-param-value-B</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>attributeToSessionFilter</filter-name>-->
+        <!--<servlet-name>mockController</servlet-name>-->
+    <!--</filter-mapping>-->
+    <!---->
+    <!--&lt;!&ndash; LISTENERS &ndash;&gt;-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyHttpSessionActivationListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyHttpSessionAtributeListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyHttpSessionBindingListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyHttpSessionListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyServletContextAttributeListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyServletContextListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyServletRequestAttributeListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>com.learn.servlet.listener.MyServletRequestListener</listener-class>-->
+    <!--</listener>-->
 
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>/appContext-dao-aop-schema.xml</param-value>-->
-    <!--</context-param>-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/appContext-dao-aop-schema.xml</param-value>
+    </context-param>
 
     <session-config>
         <session-timeout>240</session-timeout>

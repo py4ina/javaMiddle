@@ -44,6 +44,7 @@ class Subclass extends Superclass2 {
 
     public static void main(String[] params) {
         Superclass2 sup = new Subclass();
+//        System.out.println(this.field);
         sup.field = 1;
         System.out.println("Subclass field: " + sup.getField());
     }
