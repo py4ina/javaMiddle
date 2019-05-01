@@ -9,7 +9,11 @@ interface Figure {
     public void draw(Graphics graphics);
 }
 
-abstract class AbstractFigura implements Figure {
+abstract class AbstractFigure implements Figure {
+    protected AbstractFigure() {
+        System.out.println("create " + this.getClass().getSimpleName());
+    }
+
     public final String toString(){
         return this.getClass().getSimpleName();
     }
@@ -19,7 +23,7 @@ interface Graphics {
     public void drawLine(int x0, int y0, int x1, int y1);
 }
 
-class Oval extends AbstractFigura {
+class Oval extends AbstractFigure {
 
     @Override
     public void draw(Graphics graphics) {
@@ -27,7 +31,7 @@ class Oval extends AbstractFigura {
     }
 }
 
-class Rect extends AbstractFigura {
+class Rect extends AbstractFigure {
     private int leftBottomX;
     private int leftBottomY;
     private int width;
@@ -55,7 +59,9 @@ class VisualUtils {
     }
 
     public static void main(String[] args) {
-        drawALL(Arrays.asList(new Rect(0, 0, 0, 0), new Oval()),
+        drawALL(Arrays.asList(
+                new Rect(0, 0, 0, 0),
+                new Rect(1, 1, 1, 1)),
                 (x0, y0, x1, y1) -> System.out.println("draw: "+x0+", "+y0+", "+x1+", "+y1)
 
         );
