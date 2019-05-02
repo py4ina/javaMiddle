@@ -1,26 +1,23 @@
 package com.learn;
 
-import java.lang.reflect.Field;
+
+import java.util.StringTokenizer;
 
 public class Main {
+    static String IN = "Название=Учим Java с нуля;" +
+            "Автора=Pro-java.ru;" +
+            "Издательство=Javadocdoc;" +
+            "Авторское право=2017";
 
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
-        B b = new B();
-        b.getAField();
-    }
-}
+    public static void main(String[] args) {
+        StringTokenizer stringTokenizer = new StringTokenizer(IN, "=;");
 
-class A {
-    private String field = "I'm private field";
-}
+        while (stringTokenizer.hasMoreTokens()){
+//            System.out.println(stringTokenizer.nextToken());
+            String key = stringTokenizer.nextToken();
+            String val = stringTokenizer.nextToken();
 
-class B {
-
-    public void getAField() throws NoSuchFieldException, IllegalAccessException {
-        A a = new A();
-        Field field = A.class.getDeclaredField("field");
-        field.setAccessible(true);
-        String s = (String) field.get(a);
-        System.out.println(s);
+            System.out.println(key + " -> " + val);
+        }
     }
 }
