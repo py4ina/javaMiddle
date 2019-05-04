@@ -1,4 +1,4 @@
-package com.learn.io;
+package com.learn.io._1_lesson;
 
 import java.io.FileInputStream;
 import java.io.IOException;

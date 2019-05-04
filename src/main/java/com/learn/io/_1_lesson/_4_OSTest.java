@@ -1,11 +1,11 @@
-package com.learn.io;
+package com.learn.io._1_lesson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class _5_OSTest_array {
+public class _4_OSTest {
     public static void main(String[] args) throws IOException {
         String fileName = "/home/vitalik/file0.txt";
 
@@ -22,11 +22,10 @@ public class _5_OSTest_array {
     }
 
     private static byte[] readFullyByByte(InputStream in) throws IOException {
+        int oneByte;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        byte[] buff = new byte[5];
-        int count;
-        while ((count = in.read(buff)) != -1){
-            out.write(buff, 0, count);
+        while ((oneByte = in.read()) != -1){
+            out.write(oneByte);
         }
         return out.toByteArray();
     }

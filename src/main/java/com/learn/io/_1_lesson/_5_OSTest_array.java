@@ -1,31 +1,35 @@
-package com.learn.io;
+package com.learn.io._1_lesson;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class _3_ISTest_array_short {
-    public static void main(String[] args) {
+public class _5_OSTest_array {
+
+    public static void main(String[] args) throws IOException {
         String fileName = "/home/vitalik/file0.txt";
 
         InputStream inFile = null;
         try {
             inFile = new FileInputStream(fileName);
-            readFullyByArray(inFile);
+            byte[] data = readFullyByByte(inFile);
+            System.out.println(new String(data, "UTF-8"));
         } catch (IOException e){
-            e.printStackTrace();
-            System.out.println("");
+            throw new IOException("Exception when open and read file " + fileName, e);
         } finally {
             closeQuietly(inFile);
         }
     }
 
-    private static void readFullyByArray(InputStream in) throws IOException {
+    private static byte[] readFullyByByte(InputStream in) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
         byte[] buff = new byte[5];
         int count;
         while ((count = in.read(buff)) != -1){
-            System.out.print(new String(buff, 0, count, "UTF-8"));
+            out.write(buff, 0, count);
         }
+        return out.toByteArray();
     }
 
     private static void closeQuietly(InputStream inFile){

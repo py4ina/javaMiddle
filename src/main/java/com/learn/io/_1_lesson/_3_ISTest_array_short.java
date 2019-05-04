@@ -1,13 +1,10 @@
-package com.learn.io;
+package com.learn.io._1_lesson;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 
-import static org.apache.tomcat.util.http.fileupload.IOUtils.closeQuietly;
-
-public class _2_ISTest_array {
+public class _3_ISTest_array_short {
     public static void main(String[] args) {
         String fileName = "/home/vitalik/file0.txt";
 
@@ -17,6 +14,7 @@ public class _2_ISTest_array {
             readFullyByArray(inFile);
         } catch (IOException e){
             e.printStackTrace();
+            System.out.println("");
         } finally {
             closeQuietly(inFile);
         }
@@ -24,16 +22,18 @@ public class _2_ISTest_array {
 
     private static void readFullyByArray(InputStream in) throws IOException {
         byte[] buff = new byte[5];
+        int count;
+        while ((count = in.read(buff)) != -1){
+            System.out.print(new String(buff, 0, count, "UTF-8"));
+        }
+    }
 
-        while (true){
-            int count = in.read(buff);
-
-            if (count != -1){
-                System.out.println("count = " + count
-                        + ", buff = " + Arrays.toString(buff)
-                        + ", str = " + new String(buff, 0, count, "UTF-8"));
-            } else {
-                break;
+    private static void closeQuietly(InputStream inFile){
+        if (inFile != null){
+            try {
+                inFile.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
