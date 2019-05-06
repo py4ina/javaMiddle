@@ -9,12 +9,16 @@ public class _1_decorator_gzip {
     private static final int BUFFER_SIZE = 256;
 
     public static void main(String[] args) throws IOException {
-        InputStream in = new SniffInputStream(new BufferedInputStream(
-                new FileInputStream(FILE_FROM_NAME)));
+        InputStream in =
+                new SniffInputStream(
+                        new BufferedInputStream(
+                                new SniffInputStream(
+                                        new FileInputStream(FILE_FROM_NAME))));
 
-        OutputStream out = new GZIPOutputStream(
-                new BufferedOutputStream(
-                        new FileOutputStream(FILE_TO_NAME)));
+        OutputStream out =
+                new GZIPOutputStream(
+                        new BufferedOutputStream(
+                                new FileOutputStream(FILE_TO_NAME)));
 
         int count;
         byte[] buff = new byte[BUFFER_SIZE];
