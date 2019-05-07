@@ -13,6 +13,7 @@ public class _1_Charset {
         }
 
         for (String name: Charset.availableCharsets().keySet()){
+            System.out.println(name);
             System.out.println(new String(rawData, name));
             System.out.println("\n\n\n");
         }
