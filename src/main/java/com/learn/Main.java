@@ -1,34 +1,28 @@
 package com.learn;
 
-
-import lombok.Data;
-
 import java.io.File;
-import java.nio.file.Path;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class Main {
-    private final static String PATH = "/home/vitalik/";
     private static List<String> result = new ArrayList();
-    private static String fileNameToSearch;
+    private String fileNameToSearch;
 
-    //и его геттер
     public static List<String> getResult() {
         return result;
     }
-    //Имя файла, для хранения:
-    public static String getFileNameToSearch() {
+
+    public String getFileNameToSearch() {
         return fileNameToSearch;
     }
+
     public void setFileNameToSearch(String fileNameToSearch) {
         this.fileNameToSearch = fileNameToSearch;
     }
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Main main = new Main();
         main.inputVars();
     }
@@ -49,7 +43,7 @@ public class Main {
             for (String matched:getResult())
                 System.out.println("Found: "+matched);
         }
-    }
+    } //здесь мы вводим названия
 
     public void searchDirectory(File file, String fileName){
         setFileNameToSearch(fileName);
@@ -57,9 +51,9 @@ public class Main {
             search(file);
         else
             System.out.println(file.getAbsoluteFile()+" is not a directory\n");
-    }
+    } //здесь мы проверим, является ли это директорией
 
-    public static void search(File file){
+    public void search(File file){
         if (file.isDirectory()){
             System.out.println("Searching directory "+file.getAbsoluteFile());
             if (file.canRead()){
@@ -67,10 +61,11 @@ public class Main {
                     if (temp.isDirectory())
                         search(temp);
                     else
-                    if (getFileNameToSearch().equals(temp.getName().toLowerCase()))
+
+                    if (getFileNameToSearch().toLowerCase().equals(temp.getName().toLowerCase()))
                         result.add(temp.getAbsoluteFile().toString());
             }else
                 System.out.println(file.getAbsoluteFile()+": Permission Denied!");
         }
-    }
+    }//сам механизм поиска файла.
 }
