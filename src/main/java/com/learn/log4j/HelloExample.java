@@ -1,11 +1,14 @@
 package com.learn.log4j;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 public class HelloExample {
     final static Logger logger = Logger.getLogger(HelloExample.class);
 
     public static void main(String[] args) {
+//        logger.setLevel(Level.ERROR);
+        logger.trace("Trace Message!");
         logger.debug("Log4jExample: A Sample Debug Message");
         logger.info("Log4jExample: A Sample Info  Message");
         logger.warn("Log4jExample: A Sample Warn  Message");
