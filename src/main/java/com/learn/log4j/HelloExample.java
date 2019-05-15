@@ -14,10 +14,6 @@ public class HelloExample {
         logger.warn("Log4jExample: A Sample Warn  Message");
         logger.error("Log4jExample: A Sample Error Message");
         logger.fatal("Log4jExample: A Sample Fatal Message");
-
-//        HelloExample obj = new HelloExample();
-//        obj.runMe("mkyong");
-
     }
 
     private void runMe(String parameter){
