@@ -1,12 +1,13 @@
 package com.learn;
 
-import java.io.IOException;
-
 public class Main {
     public static void main(String[] args) {
-        String s = "Я стану программистом!";
-        s = s.concat(" Очень хорошим программистом!");
+//        for (Object property: System.getProperties().keySet()) {
+//
+//            System.out.println(property + " -> " + System.getProperty((String) property));
+//        }
 
-        System.out.println(s);
+        String rootPath = System.getProperty("user.dir");
+        System.out.println(rootPath + "/src/main/resources/learnFiles/");
     }
 }
