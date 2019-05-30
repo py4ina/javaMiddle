@@ -60,25 +60,3 @@ public class Main {
         }
     }
 }
-
-class A {
-    protected A a(){
-        return new A();
-    }
-
-    public void b(){
-        System.out.println("A.b()");
-    }
-}
-
-class B extends A{
-    @Override
-    public void b() {
-        super.b();
-    }
-
-    @Override
-    public B a() {
-        return new B();
-    }
-}

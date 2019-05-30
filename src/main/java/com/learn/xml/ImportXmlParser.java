@@ -37,18 +37,21 @@ public class ImportXmlParser {
                     Element eElement = (Element) nNode;
                     System.out.println("Id : " + eElement.getAttribute("Id"));
 
-                    NodeList carNameList = eElement.getElementsByTagName("RANGE");
+                    NodeList carNameList = eElement.getElementsByTagName("ICCID");
 //
                     for (int count = 0; count < carNameList.getLength(); count++) {
                         Node node1 = carNameList.item(count);
                         if (node1.getNodeType() == node1.ELEMENT_NODE) {
                             Element range = (Element) node1;
-                            System.out.println("BATCH : " + range.getAttribute("BATCH"));
-                            System.out.println("FIRST-ICCID : " + range.getAttribute("FIRST-ICCID"));
-                            System.out.println("LAST-ICCID : " + range.getAttribute("LAST-ICCID"));
-                            System.out.println("------------");
+                            System.out.println(range.getTextContent());
+//                            System.out.println("BATCH : " + range.getAttribute("BATCH"));
+//                            System.out.println("FIRST-ICCID : " + range.getAttribute("FIRST-ICCID"));
+//                            System.out.println("LAST-ICCID : " + range.getAttribute("LAST-ICCID"));
+//                            System.out.println("------------");
                         }
                     }
+//                    NodeList carNameList2 = eElement.getElementsByTagName("ICCID");
+//                    System.out.println(carNameList2);
                 }
             }
 

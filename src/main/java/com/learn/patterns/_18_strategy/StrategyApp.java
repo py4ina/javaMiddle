@@ -1,4 +1,4 @@
-package com.learn.patterns._18_іtrategy;
+package com.learn.patterns._18_strategy;
 
 import java.util.Arrays;
 
