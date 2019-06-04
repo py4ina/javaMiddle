@@ -27,12 +27,11 @@ public class _0_OkFailExample {
     }
 
     @Test
-    public void test_convert_A_to_B(){
-//        List<String> list = new ArrayList<>();
-//        list.add("A");
-//        list.add("A");
-//        if (list.size() != 2) {
-//            throw new AssertionError();
-//        }
+    public void test_get_the_same(){
+        List<String> list = new ArrayList<>();
+        list.add("A");
+        if (!list.get(0).equals("A")) {
+            throw new AssertionError();
+        }
     }
 }
