@@ -1,15 +1,32 @@
 package com.learn.testing.Mockito;
 
-import org.mockito.Mockito;
 
-import java.util.List;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.mockito.Mockito.*;
 
 public class _20_verify_arg {
-    public static void main(String[] args) {
-        List list = Mockito.mock(List.class);
+    private ArrayList list = new ArrayList<>();
 
-        list.add("A");
-        list.remove("B");
-        list.add("B");
+    @Before
+    public void setUp(){
+        this.list = new ArrayList<>();
+    }
+
+    @Test
+    public void test_addAll() {
+        Collection<String> collections = mock(Collection.class);
+        when(collections.toArray()).thenReturn(new String[]{"A", "B", "C"});
+        when(collections.iterator()).thenReturn(Arrays.asList("A", "B", "C").iterator());
+
+        list.addAll(collections);
+
+        verify(collections).toArray();
+        verify(collections).iterator();
     }
 }
