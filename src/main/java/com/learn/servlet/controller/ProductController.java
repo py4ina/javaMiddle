@@ -21,10 +21,10 @@ public class ProductController extends DependencyInjectionServlet {
     private static final String PAGE_OK = "product.jsp";
     private static final String PAGE_ERROR = "error.jsp";
 
-    private static final Logger logger = Logger.getLogger(ClassName.getCurrentClassName());
+//    private static final Logger logger = Logger.getLogger(ClassName.getCurrentClassName());
 
     @Inject("productDao")
-    private ProductDao productDao;
+    ProductDao productDao;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idStr = request.getParameter(PARAM_ID);
@@ -33,19 +33,19 @@ public class ProductController extends DependencyInjectionServlet {
                 Integer id = Integer.valueOf(idStr);
                 Product model = productDao.selectById(id);
                 request.setAttribute(ATTRIBUTE_MODEL_TO_VIEW, model);
-                logger.trace("set attribute '" + ATTRIBUTE_MODEL_TO_VIEW + "' to " + model);
+//                logger.trace("set attribute '" + ATTRIBUTE_MODEL_TO_VIEW + "' to " + model);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE_OK);
                 dispatcher.forward(request, response);
-                logger.debug("PAGE_OK: RequestDispatcher.forward(...) to " + PAGE_OK);
+//                logger.debug("PAGE_OK: RequestDispatcher.forward(...) to " + PAGE_OK);
                 return;
             } catch (NumberFormatException | NoSuchEntityException | DaoSystemException e){
 //                e.printStackTrace();
                 response.sendRedirect(PAGE_ERROR);
-                logger.warn("PAGE_ERROR: RequestDispatcher.forward(...) to " + PAGE_ERROR, e);
+//                logger.warn("PAGE_ERROR: RequestDispatcher.forward(...) to " + PAGE_ERROR, e);
             }
         }
         response.sendRedirect(PAGE_ERROR);
-        logger.warn("PAGE_ERROR: RequestDispatcher.forward(...) to " + PAGE_ERROR);
+//        logger.warn("PAGE_ERROR: RequestDispatcher.forward(...) to " + PAGE_ERROR);
     }
 }
