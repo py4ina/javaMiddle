@@ -1,13 +1,11 @@
 package com.learn.testing.Mockito;
 
 
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
+import java.util.ArrayList;
+import java.util.Collection;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;

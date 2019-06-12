@@ -6,13 +6,11 @@ import com.learn.servlet.dao.exception.NoSuchEntityException;
 import com.learn.servlet.entity.Product;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 import static org.mockito.Mockito.*;
