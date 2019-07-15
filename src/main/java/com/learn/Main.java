@@ -9,55 +9,45 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class Main {
 
     private static final String PATH = "/src/main/resources/learnFiles/input.xml";
 
 
-    public static void main(String[] args) {
-        System.out.println(System.getProperty("file.separator"));
-//        try {
-//            String rootPath = System.getProperty("user.dir") + PATH;
-//            File inputFile = new File(rootPath);
-//
-//            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//            DocumentBuilder builder = factory.newDocumentBuilder();
-//            Document doc = builder.parse(inputFile);
-//            doc.getDocumentElement().normalize();
-//            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-//            NodeList nList = doc.getElementsByTagName("supercars");
-//            System.out.println("----------------------------");
-////
-//            for (int temp = 0; temp < nList.getLength(); temp++) {
-//                Node nNode = nList.item(temp);
-//                System.out.println("\nCurrent Element :" + nNode.getNodeName());
-//
-//                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-//                    Element eElement = (Element) nNode;
-//                    System.out.print("company : ");
-//                    System.out.println(eElement.getAttribute("company"));
-//                    NodeList carNameList = eElement.getElementsByTagName("carname");
-//
-//                    for (int count = 0; count < carNameList.getLength(); count++) {
-//                        Node node1 = carNameList.item(count);
-//
-//                        if (node1.getNodeType() == node1.ELEMENT_NODE) {
-//                            Element car = (Element) node1;
-//                            System.out.print("car name : ");
-//                            System.out.println(car.getTextContent());
-//                            System.out.print("car type : ");
-//                            System.out.println(car.getAttribute("type"));
-//                        }
-//                    }
-//                }
-//            }
-//
-//        } catch (ParserConfigurationException | SAXException | IOException e) {
-//            e.printStackTrace();
-//        }
+    public static void main(String[] args) throws IOException {
+        String fileZip = "/home/vitalik/Documents/UkrPol/DNA/45188393.zip";
+        File destDir = new File("/home/vitalik/Documents/UkrPol/T-mobile/import/unzipTest");
+        byte[] buffer = new byte[1024];
+        ZipInputStream zis = new ZipInputStream(new FileInputStream(fileZip));
+        ZipEntry zipEntry = zis.getNextEntry();
+        while (zipEntry != null) {
+            File newFile = newFile(destDir, zipEntry);
+            FileOutputStream fos = new FileOutputStream(newFile);
+            int len;
+            while ((len = zis.read(buffer)) > 0) {
+                fos.write(buffer, 0, len);
+            }
+            fos.close();
+            zipEntry = zis.getNextEntry();
+        }
+        zis.closeEntry();
+        zis.close();
+    }
+
+    public static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
+        File destFile = new File(destinationDir, zipEntry.getName());
+
+        String destDirPath = destinationDir.getCanonicalPath();
+        String destFilePath = destFile.getCanonicalPath();
+
+        if (!destFilePath.startsWith(destDirPath + File.separator)) {
+            throw new IOException("Entry is outside of the target dir: " + zipEntry.getName());
+        }
+
+        return destFile;
     }
 }
