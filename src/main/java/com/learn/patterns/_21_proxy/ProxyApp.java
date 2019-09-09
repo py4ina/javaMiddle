@@ -3,7 +3,7 @@ package com.learn.patterns._21_proxy;
 public class ProxyApp {
     public static void main(String[] args) {
         Image image = new ProxyImage("../../../../.img");
-//        image.display();
+        image.display();
     }
 }
 

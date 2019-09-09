@@ -58,11 +58,11 @@ public class ImportXmlParser {
                         Node node = rangeList.item(count);
                         if (node.getNodeType() == node.ELEMENT_NODE) {
                             Element rangeElement = (Element) node;
-                            Range range = new Range(rangeElement.getAttribute("BATCH"),
-                                    Long.valueOf(rangeElement.getAttribute("FIRST-ICCID")),
-                                    Long.valueOf(rangeElement.getAttribute("LAST-ICCID")));
-
-                            rangesInner.add(range);
+                            rangesInner.add(Range.builder()
+                                    .batch(rangeElement.getAttribute("BATCH"))
+                                    .firstIcc(Long.valueOf(rangeElement.getAttribute("FIRST-ICCID")))
+                                    .lastIcc(Long.valueOf(rangeElement.getAttribute("LAST-ICCID")))
+                                    .build());
                         }
                     }
                     xmlInfo.setRanges(rangesInner);
@@ -87,9 +87,10 @@ public class ImportXmlParser {
                             String[] rows = line.split("\\+");
                             long iccShort = Long.parseLong(rows[0].substring(9));
 
-                            IccId iccId = new IccId();
-                            iccId.setLine(line);
-                            iccId.setIccShort(iccShort);
+                            IccId iccId = IccId.builder()
+                                    .line(line)
+                                    .iccShort(iccShort)
+                                    .build();
 
                             for (Range rangeInner : xmlInfo.getRanges()) {
                                 if (iccShort >= rangeInner.getFirstIcc() && iccShort <= rangeInner.getLastIcc()){
@@ -105,9 +106,21 @@ public class ImportXmlParser {
 
 
             System.out.println(xmlInfo);
+
+            List<String> lines = getLines(xmlInfo);
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static List<String> getLines(XMLInfo xmlInfo) {
+        List<String> lines = new ArrayList<>();
+        xmlInfo.getHat().forEach((key, val) -> {
+            lines.add(key + ": " + val);
+        });
+        lines.add("Start Data");
+        xmlInfo.getLines().forEach(line -> lines.add(line.getLine() + "+" + line.getBatch()));
+        return lines;
     }
 }
 
@@ -119,7 +132,7 @@ class XMLInfo{
 }
 
 @Data
-@AllArgsConstructor
+@Builder
 class Range{
     private String batch;
     private long firstIcc;
@@ -127,6 +140,7 @@ class Range{
 }
 
 @Data
+@Builder
 class IccId{
     private String line;
     private long iccShort;
