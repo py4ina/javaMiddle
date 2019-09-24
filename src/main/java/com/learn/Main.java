@@ -19,7 +19,22 @@ public class Main {
 
 
     public static void main(String ... args) {
-        Boolean b = new Boolean("/true");
-        System.out.println(b);
+        A a = new B();
+        a.print();
+    }
+}
+
+abstract class A{
+    public abstract void print();
+}
+class B extends A{
+    public void print(){
+        System.out.println("B");
+    }
+}
+
+abstract class C extends B {
+    public void print(){
+        System.out.println("С");
     }
 }
