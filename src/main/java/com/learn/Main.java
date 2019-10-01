@@ -1,17 +1,7 @@
 package com.learn;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Main {
 
@@ -19,22 +9,39 @@ public class Main {
 
 
     public static void main(String ... args) {
-        A a = new B();
-        a.print();
+        Set<Person> people = new TreeSet<>();
+        people.add(new Person("Anna", 25));
+        people.add(new Person("Anna", 26));
+        people.add(new Person("Anna", 21));
+
+        System.out.println(people.toString());
     }
 }
 
-abstract class A{
-    public abstract void print();
-}
-class B extends A{
-    public void print(){
-        System.out.println("B");
-    }
-}
+class Person implements Comparable<Person> {
+    private String name;
+    private int age;
 
-abstract class C extends B {
-    public void print(){
-        System.out.println("С");
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Person that) {
+        int result = this.age - that.age;
+        if (result != 0){
+            return result;
+        } else {
+            return this.name.compareTo(that.name);
+        }
     }
 }
