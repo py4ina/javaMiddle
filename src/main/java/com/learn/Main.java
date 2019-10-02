@@ -1,40 +1,41 @@
 package com.learn;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
 public class Main {
+    public static void main(String[] args) {
 
-    private static final String PATH = "/src/main/resources/learnFiles/input.xml";
-
-
-    public static void main(String ... args) {
-        A a = new B();
-        a.print();
+        Employee[] employees = new Employee[] {
+                Employee.builder()
+                        .name("John")
+                        .age(25)
+                        .salary(3000.0)
+                        .mobile(9922001)
+                        .build(),
+                Employee.builder()
+                        .name("Ace")
+                        .age(22)
+                        .salary(2000.0)
+                        .mobile(9922002)
+                        .build(),
+                Employee.builder()
+                        .name("Keith")
+                        .age(35)
+                        .salary(4000.0)
+                        .mobile(9922003)
+                        .build(),
+        };
     }
 }
 
-abstract class A{
-    public abstract void print();
-}
-class B extends A{
-    public void print(){
-        System.out.println("B");
-    }
-}
-
-abstract class C extends B {
-    public void print(){
-        System.out.println("С");
-    }
+@Data
+@AllArgsConstructor
+@Builder
+class Employee {
+    String name;
+    int age;
+    double salary;
+    long mobile;
 }
