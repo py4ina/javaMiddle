@@ -1,11 +1,12 @@
 package com.learn.equals_hashCode;
 
 import lombok.Data;
-
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PhoneNumber {
+    @EqualsAndHashCode.Include
     private final short areaCode;
     private final short exchange;
     private final short extension;
@@ -30,19 +31,19 @@ public class PhoneNumber {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PhoneNumber that = (PhoneNumber) o;
-        return areaCode == that.areaCode &&
-                exchange == that.exchange &&
-                extension == that.extension;
-    }
-
-    @Override
-    public int hashCode() {
-        return 42;
-//        return Objects.hash(areaCode, exchange, extension);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        PhoneNumber that = (PhoneNumber) o;
+//        return areaCode == that.areaCode &&
+//                exchange == that.exchange &&
+//                extension == that.extension;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return 42;
+////        return Objects.hash(areaCode, exchange, extension);
+//    }
 }
