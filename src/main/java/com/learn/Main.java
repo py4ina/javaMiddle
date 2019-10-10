@@ -14,10 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        try {
-            Driver driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
-            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD)) {
+//            Driver driver = new FabricMySQLDriver();
+//            DriverManager.registerDriver(driver);
+
             if (!connection.isClosed()){
                 System.out.println("+");
             }
