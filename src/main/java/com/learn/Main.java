@@ -1,29 +1,24 @@
 package com.learn;
 
-import java.sql.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Main {
     private final static String URL = "jdbc:mysql://10.4.4.8:3306/ukr_pol";
     private final static String USER_NAME = "root";
     private final static String PASSWORD = "UkrPol_123";
 
-    private static final String QUERY = "SELECT * FROM user";
-
     public static void main(String[] args) {
-        System.out.println("Start");
+        ArrayList<String> states = new ArrayList<>();
+        states.add("Germany");
+        states.add("France");
+        states.add("Italy");
+        states.add("Spain");
 
-        try (Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-             CallableStatement statement = connection.prepareCall("{call getAllWorkingTerminals}");
-             ResultSet resultSet = statement.executeQuery()){
+        Iterator<String> iter = states.iterator();
+        while(iter.hasNext()){
 
-            while (resultSet.next()){
-                System.out.println(resultSet.getString("name"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println("Stop");
+            System.out.println(iter.next());
         }
     }
 }
