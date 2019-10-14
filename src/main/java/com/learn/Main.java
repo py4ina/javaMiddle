@@ -1,7 +1,6 @@
 package com.learn;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 public class Main {
     private final static String URL = "jdbc:mysql://10.4.4.8:3306/ukr_pol";
@@ -9,16 +8,35 @@ public class Main {
     private final static String PASSWORD = "UkrPol_123";
 
     public static void main(String[] args) {
-        ArrayList<String> states = new ArrayList<>();
-        states.add("Germany");
-        states.add("France");
-        states.add("Italy");
-        states.add("Spain");
+        List<Integer> list = new ArrayList<>(10);
 
-        Iterator<String> iter = states.iterator();
-        while(iter.hasNext()){
-
-            System.out.println(iter.next());
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
         }
+
+//        checkTime(list, list.getClass().getName());
+
+        list = new LinkedList<>();
+
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+
+        Iterator<Integer> iterator = ((LinkedList<Integer>) list).descendingIterator();
+
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+
+
+
+//        checkTime(list, list.getClass().getName());
+    }
+
+    private static void checkTime(List<Integer> list, String collection) {
+        long start = System.nanoTime();
+        list.contains(5_000_000);
+        long finish = System.nanoTime();
+        System.out.println(collection + " : "+ (finish - start));
     }
 }
