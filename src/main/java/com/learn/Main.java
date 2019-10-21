@@ -1,42 +1,51 @@
 package com.learn;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.util.*;
 
 public class Main {
-    private final static String URL = "jdbc:mysql://10.4.4.8:3306/ukr_pol";
-    private final static String USER_NAME = "root";
-    private final static String PASSWORD = "UkrPol_123";
-
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(10);
-
-        for (int i = 0; i < 10; i++) {
-            list.add(i);
+        Queue<Integer> queue = new PriorityQueue<>();
+        Random random = new Random();
+        for (int i = 0; i < 7; i++) {
+            queue.add(new Integer(random.nextInt(100)));
         }
 
-//        checkTime(list, list.getClass().getName());
-
-        list = new LinkedList<>();
-
-        for (int i = 0; i < 10; i++) {
-            list.add(i);
+        for (int i = 0; i < 7; i++) {
+            Integer integer = queue.poll();
+            System.out.println("Обрабатываем Integer:" + integer);
         }
 
-        Iterator<Integer> iterator = ((LinkedList<Integer>) list).descendingIterator();
-
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
-        }
+        Queue<Customer> customers = new PriorityQueue<>(7, Comparator.comparingInt(Customer::getId));
+        addDataToQueue(customers);
+        pollDataFromQueue(customers);
 
 
-
-//        checkTime(list, list.getClass().getName());
     }
 
-    private static void checkTime(List<Integer> list, String collection) {
-        long start = System.nanoTime();
-        list.contains(5_000_000);
-        long finish = System.nanoTime();
-        System.out.println(collection + " : "+ (finish - start));
+    private static void addDataToQueue(Queue<Customer> customerPriorityQueue){
+        Random random = new Random();
+        for (int i = 0; i < 7; i++) {
+            int id = random.nextInt(100);
+            customerPriorityQueue.add(new Customer(id, "Vova_"+id));
+        }
     }
+
+    private static void pollDataFromQueue(Queue<Customer> customerPriorityQueue){
+        while (true){
+            Customer customer = customerPriorityQueue.poll();
+            if (customer == null) break;
+            System.out.println("Обработка клиента с id=" + customer.getId());
+        }
+    }
+}
+
+@Data
+@AllArgsConstructor
+class Customer {
+    private int id;
+    private String name;
 }
