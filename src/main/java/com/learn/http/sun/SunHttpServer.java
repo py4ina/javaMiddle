@@ -8,6 +8,6 @@ import static com.sun.net.httpserver.spi.HttpServerProvider.provider;
 
 public class SunHttpServer {
     public static void main(String[] args) {
-        HttpServer server = provider().createHttpServer(new InetSocketAddress());
+//        HttpServer server = provider().createHttpServer(new InetSocketAddress());
     }
 }

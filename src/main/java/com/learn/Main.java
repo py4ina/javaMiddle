@@ -11,13 +11,26 @@ public class Main {
     }
 
     private static boolean isMeating(int firstStart, int firstLengthJump, int secondStart, int secondLengthJump){
+        int firstPosition;
+        int secondPosition = firstStart >= secondStart ? firstStart : secondStart;
+
+        if (firstStart <= secondStart) {
+            firstPosition = firstStart;
+        }
+        else {
+            firstPosition = secondStart;
+        }
 
         while (true){
 
-            if ((firstStart + firstLengthJump) == (secondStart + secondLengthJump)){
+            secondPosition = secondStart;
+
+            if (firstPosition == secondPosition){
                 return true;
             }
-//            firstLengthJump
+
+            firstPosition += firstLengthJump;
+            secondPosition += secondLengthJump;
         }
     }
 }
