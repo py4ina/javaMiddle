@@ -1,4 +1,4 @@
-package com.learn.lambda;
+package com.learn.lambda.example_1;
 
 public class Lamp implements ElectricityConsumer {
 

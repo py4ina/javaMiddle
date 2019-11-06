@@ -1,4 +1,4 @@
-package com.learn.lambda;
+package com.learn.lambda.example_1;
 
 import java.util.ArrayList;
 import java.util.List;
