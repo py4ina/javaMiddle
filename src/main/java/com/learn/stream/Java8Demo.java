@@ -5,10 +5,14 @@ import java.util.List;
 
 public class Java8Demo {
     public static void main(String[] args) {
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
+        List<Integer> list = Arrays.asList(12, 20, 35, 46, 55, 68, 75);
 
-        list.stream()
-                .filter(integer -> integer > 3)
-                .forEach(i -> System.out.println(i));
+        Integer reduce = list.stream()
+                .filter(integer-> integer % 5 == 0)
+                .map(integer -> integer * 2)
+                .findFirst()
+                .orElse(0);
+
+        System.out.println(reduce);
     }
 }
