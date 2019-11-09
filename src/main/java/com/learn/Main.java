@@ -1,35 +1,46 @@
 package com.learn;
 
 
-import java.util.HashMap;
-
 public class Main {
     public static void main(String[] args) {
-//        C c = new C();
-//        c.show();
-        System.out.println(2 > 2 ? true : false);
 
     }
 }
 
-interface A{
-    static void a(){
-        System.out.println("aaaaaaaaaa");
-    }
-    default void show(){
-        System.out.println("A.show()");
-    }
+interface B {
+    void b();
 }
 
-interface B{
-    default void show(){
-        System.out.println("B.show()");
-    }
-}
 
-class C implements A, B{
+abstract class A implements B{
+    private int a;
+
+    public A(int a) {
+        this.a = a;
+    }
+
+    public abstract void a();
+
     @Override
-    public void show() {
-        A.a();
+    public void b() {
+        System.out.println("fffffffff");
+    }
+
+    public static void ff(){
+        System.out.println("sdvsavsadv");
+    }
+
+
+}
+
+class C extends A{
+
+    public C(int a) {
+        super(a);
+    }
+
+    @Override
+    public void a() {
+
     }
 }
