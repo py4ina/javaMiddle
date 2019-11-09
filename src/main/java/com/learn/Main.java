@@ -5,32 +5,31 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<Integer, String> map = new HashMap<>();
-        map.put(null, "p");
-        System.out.println(map);
+//        C c = new C();
+//        c.show();
+        System.out.println(2 > 2 ? true : false);
+
     }
+}
 
-    private static boolean isMeating(int firstStart, int firstLengthJump, int secondStart, int secondLengthJump){
-        int firstPosition;
-        int secondPosition = firstStart >= secondStart ? firstStart : secondStart;
+interface A{
+    static void a(){
+        System.out.println("aaaaaaaaaa");
+    }
+    default void show(){
+        System.out.println("A.show()");
+    }
+}
 
-        if (firstStart <= secondStart) {
-            firstPosition = firstStart;
-        }
-        else {
-            firstPosition = secondStart;
-        }
+interface B{
+    default void show(){
+        System.out.println("B.show()");
+    }
+}
 
-        while (true){
-
-            secondPosition = secondStart;
-
-            if (firstPosition == secondPosition){
-                return true;
-            }
-
-            firstPosition += firstLengthJump;
-            secondPosition += secondLengthJump;
-        }
+class C implements A, B{
+    @Override
+    public void show() {
+        A.a();
     }
 }

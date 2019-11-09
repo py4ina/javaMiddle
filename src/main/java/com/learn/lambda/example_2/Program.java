@@ -13,9 +13,10 @@ public class Program {
         people.add(new Person("D", 4));
         people.add(new Person("E", 5));
 
-        people.stream()
-                .filter(p -> p.getAge() > 3)
-                .sorted((p1, p2) -> p1.getName().compareTo(p2.getName()))
-                .forEach(System.out::println);
+        double averageAge = people.stream()
+                .filter(p -> p.getAge() >= 2)
+                .mapToInt(p -> p.getAge()).average().getAsDouble();
+
+        System.out.println(averageAge);
     }
 }
