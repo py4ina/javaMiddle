@@ -1,46 +1,24 @@
 package com.learn;
 
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
+
 public class Main {
     public static void main(String[] args) {
-
-    }
-}
-
-interface B {
-    void b();
-}
+        List<String> list = Stream.of("a", "b", "hello")
+                .map(s -> s.toUpperCase())
+                .collect(toList());
+        System.out.println(list);
 
 
-abstract class A implements B{
-    private int a;
-
-    public A(int a) {
-        this.a = a;
-    }
-
-    public abstract void a();
-
-    @Override
-    public void b() {
-        System.out.println("fffffffff");
-    }
-
-    public static void ff(){
-        System.out.println("sdvsavsadv");
-    }
-
-
-}
-
-class C extends A{
-
-    public C(int a) {
-        super(a);
-    }
-
-    @Override
-    public void a() {
-
+//        long count = list.stream()
+//                .filter(integer -> integer < 2)
+//                .count();
+//        System.out.println(count);
     }
 }
