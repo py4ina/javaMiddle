@@ -12,7 +12,7 @@ public abstract class Operation {
         return this.name;
     }
 
-    abstract double eval(double x, double y);
+    protected abstract double eval(double x, double y);
 
     public static final Operation PLUS = new Operation("+") {
         @Override
