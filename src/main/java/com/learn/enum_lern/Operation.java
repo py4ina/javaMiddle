@@ -1,44 +1,59 @@
 package com.learn.enum_lern;
 
-public abstract class Operation {
-    private String name;
+import java.io.ObjectStreamException;
+import java.io.Serializable;
 
-    public Operation(String name) {
+public abstract class Operation implements Serializable {
+    private final transient String name;
+
+    protected Operation(String name) {
         this.name = name;
     }
+
+    public static Operation PLUS = new Operation("+") {
+        protected double eval(double x, double y) {
+            return x + y;
+        }
+    };
+
+    public static Operation MINUS = new Operation("-") {
+        protected double eval(double x, double y) {
+            return x - y;
+        }
+    };
+
+    public static Operation TIMES = new Operation("*") {
+        protected double eval(double x, double y) {
+            return x * y;
+        }
+    };
+
+    public static Operation DIVIDE = new Operation("/") {
+        protected double eval(double x, double y) {
+            return x / y;
+        }
+    };
+
+    protected abstract double eval(double x, double y);
 
     @Override
     public String toString() {
         return this.name;
     }
 
-    abstract double eval(double x, double y);
+    public final boolean equals(Object that){
+        return super.equals(that);
+    }
 
-    public static final Operation PLUS = new Operation("+") {
-        @Override
-        double eval(double x, double y) {
-            return x + y;
-        }
-    };
+    public final int hashCode(){
+        return super.hashCode();
+    }
 
-    public static final Operation MINUS = new Operation("-") {
-        @Override
-        double eval(double x, double y) {
-            return x - y;
-        }
-    };
+    private static int nextOrdinal = 0;
+    private final int ordinal = nextOrdinal++;
+    private static final Operation[] VALUES = {PLUS, MINUS, TIMES, DIVIDE};
 
-    public static final Operation TIMES = new Operation("*") {
-        @Override
-        double eval(double x, double y) {
-            return x * y;
-        }
-    };
-
-    public static final Operation DIVIDED_BY = new Operation("/") {
-        @Override
-        double eval(double x, double y) {
-            return x / y;
-        }
-    };
+    Object readResolve() throws ObjectStreamException {
+        return VALUES[ordinal];
+    }
 }
