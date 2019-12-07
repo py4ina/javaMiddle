@@ -6,12 +6,14 @@ public enum Country {
         public String getCurrency() {
             return "DOLLAR";
         }
-    }, RUSSIA {
+    },
+    RUSSIA {
 
         public String getCurrency() {
             return "RUBLE";
         }
-    }, INDIA {
+    },
+    INDIA {
 
         public String getCurrency() {
             return "RUPEE";
