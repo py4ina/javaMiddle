@@ -1,33 +1,21 @@
 package com.learn;
 
 
-import com.learn.enum_lern.Country;
-
-import java.util.IntSummaryStatistics;
-import java.util.function.IntPredicate;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Main {
-    public static void main(String[] args) {
-//        LongStream stream = LongStream.of(3l, 4l, 7l, 9l, 11l);
-//
-//        IntSummaryStatistics intSummaryStatistics = stream
-//                .mapToInt(value -> Integer.parseInt(String.valueOf(value)))
-//                .summaryStatistics();
-//
-//        System.out.println(intSummaryStatistics.getSum());
-//        System.out.println(intSummaryStatistics.getAverage());
+    public static void main(String[] args) throws FileNotFoundException, ScriptException {
+        ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+        ScriptEngine engine = scriptEngineManager.getEngineByName("nashorn");
 
-        r((Predicate<Integer>)i -> true);
+        engine.eval("print('Hello World!!!')");
 
-    }
+        FileReader fileReader = new FileReader("/home/vitalik/IdeaProjects/javaMiddle/src/main/java/com/learn/demo.js");
+        engine.eval(fileReader);
 
-    private static void r(Predicate<Integer> predicate){
-        System.out.println("Predicate");
-    }
-
-    private static void r(IntPredicate predicate){
-        System.out.println("IntPredicate");
     }
 }
