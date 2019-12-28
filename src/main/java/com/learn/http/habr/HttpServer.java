@@ -12,6 +12,7 @@ public class HttpServer {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(8081)){
             System.out.println("Server started!");
+            System.out.println(serverSocket.getLocalPort());
 
             while (true){
                 // ожидаем подключения
@@ -35,6 +36,10 @@ public class HttpServer {
 
                     // отправляем ответ
                     output.println("HTTP/1.1 200 OK");
+                    output.println ("header1: value1");
+                    output.println ("header2: value2");
+                    output.println ("header3: value3");
+
                     output.println("Content-Type: text/html; charset=utf-8");
                     output.println();
                     output.println("<p style='color:red'>Привет всем!</p>");
