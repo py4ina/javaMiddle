@@ -1,16 +1,25 @@
 package com.learn.testing.tutorialspoint;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
-
+@Ignore
 public class TestJunit {
-    String message = "Hello World";
+    String message = "Robert";
     MessageUtil messageUtil = new MessageUtil(message);
 
-    @Test
+
+    @Test(expected = ArithmeticException.class)
     public void testPrintMessage() {
-        message = "New Word";
-        assertEquals(message, messageUtil.printMessage());
+        System.out.println("Inside testPrintMessage()");
+        messageUtil.printMessage();
+    }
+
+    @Test
+    public void testSalutationMessage() {
+        System.out.println("Inside testSalutationMessage()");
+        message = "Hi!" + "Robert";
+        assertEquals(message,messageUtil.salutationMessage());
     }
 }

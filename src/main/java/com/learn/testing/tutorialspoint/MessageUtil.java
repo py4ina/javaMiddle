@@ -10,8 +10,22 @@ public class MessageUtil {
         this.message = message;
     }
 
+//    // prints the message
+//    public String printMessage(){
+//        System.out.println(message);
+//        return message;
+//    }
+
     // prints the message
-    public String printMessage(){
+    public void printMessage(){
+        System.out.println(message);
+        int a = 0;
+        int b = 1/a;
+    }
+
+    // add "Hi!" to the message
+    public String salutationMessage(){
+        message = "Hi!" + message;
         System.out.println(message);
         return message;
     }
