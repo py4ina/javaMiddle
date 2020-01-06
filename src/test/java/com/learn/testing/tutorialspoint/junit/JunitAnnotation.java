@@ -1,4 +1,4 @@
-package com.learn.testing.tutorialspoint;
+package com.learn.testing.tutorialspoint.junit;
 
 import org.junit.*;
 

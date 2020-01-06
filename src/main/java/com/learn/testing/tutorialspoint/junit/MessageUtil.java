@@ -1,4 +1,4 @@
-package com.learn.testing.tutorialspoint;
+package com.learn.testing.tutorialspoint.junit;
 
 public class MessageUtil {
     private String message;

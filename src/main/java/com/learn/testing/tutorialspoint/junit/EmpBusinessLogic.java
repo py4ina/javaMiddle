@@ -1,4 +1,4 @@
-package com.learn.testing.tutorialspoint;
+package com.learn.testing.tutorialspoint.junit;
 
 public class EmpBusinessLogic {
     // Calculate the yearly salary of employee
