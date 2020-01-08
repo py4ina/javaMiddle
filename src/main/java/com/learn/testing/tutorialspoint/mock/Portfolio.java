@@ -1,14 +1,20 @@
 package com.learn.testing.tutorialspoint.mock;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class Portfolio {
-    private List<Stock> stocks;
     private StockService stockService;
-    private double marketValue;
+    private List<Stock> stocks;
+
+    public double getMarketValue(){
+        double marketValue = 0.0;
+
+        for(Stock stock:stocks){
+            marketValue += stockService.getPrice(stock) * stock.getQuantity();
+        }
+        return marketValue;
+    }
 }
