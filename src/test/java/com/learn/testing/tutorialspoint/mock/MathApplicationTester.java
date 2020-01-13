@@ -1,5 +1,6 @@
 package com.learn.testing.tutorialspoint.mock;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -12,11 +13,16 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class MathApplicationTester {
 
-    @InjectMocks
-    MathApplication mathApplication = new MathApplication();
+    private MathApplication mathApplication;
+    private CalculatorService calcService;
 
-    @Mock
-    CalculatorService calcService;
+    @Before
+    public void setUp(){
+        mathApplication = new MathApplication();
+        calcService = mock(CalculatorService.class);
+        mathApplication.setCalculatorService(calcService);
+    }
+
 
     @Test
     public void testAdd(){
