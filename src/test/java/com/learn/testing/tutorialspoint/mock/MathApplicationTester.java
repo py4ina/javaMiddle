@@ -34,12 +34,12 @@ public class MathApplicationTester {
         assertEquals(mathApplication.subtract(20.0, 10.0),10.0,0.0);
 
         //default call count is 1
-        verify(calcService).subtract(20.0, 10.0);
+        verify(calcService, atLeastOnce()).subtract(20.0, 10.0);
 
         //check if add function is called three times
-        verify(calcService, times(3)).add(10.0, 20.0);
+        verify(calcService, atLeast(2)).add(10.0, 20.0);
 
         //verify that method was never called on a mock
-        verify(calcService, never()).multiply(10.0,20.0);
+        verify(calcService, atMost(3)).multiply(10.0,20.0);
     }
 }
