@@ -1,41 +1,21 @@
 package com.learn;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-
-import java.util.HashSet;
-import java.util.Objects;
+import java.time.*;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        HashSet<A> hashSet = new HashSet<>();
-        hashSet.add(A.builder().a(1).build());
-        hashSet.add(A.builder().a(1).build());
+//        LocalDateTime parse = LocalDateTime.parse("2020-01-14 14:35:12.0");
+        LocalDate now = LocalDate.now();
+        LocalTime lt = LocalTime.parse("02:53:40");
+        Instant instant = lt.atDate(LocalDate.of(now.getYear(), now.getMonth(), now.getDayOfMonth())).
+                atZone(ZoneId.systemDefault()).toInstant();
+        Date date = Date.from(instant);
+        System.out.println(date);
 
-        System.out.println(hashSet);
-    }
-}
-
-@Data
-@AllArgsConstructor
-@Builder
-class A{
-    private int a;
-    private int b;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        A a1 = (A) o;
-        return a == a1.a;
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(a);
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(),
+                ZoneId.systemDefault());
+        System.out.println(localDateTime);
     }
 }
